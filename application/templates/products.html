@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список товарів - Application</title>
+</head>
+<body>
+    <h1>Список товарів</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                <strong>{{ product.name }}</strong> — {{ product.price }} грн <br>
+                Категорія: {{ product.category.name }}<br>
+                Наявність: {% if product.available %}В наявності{% else %}Немає{% endif %}<br>
+                Статус: {{ product.get_status_display }}<br>
+                Рейтинг: {{ product.rating }} ⭐
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">⬅ На головну</a>
+</body>
+</html>
